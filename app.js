@@ -1,22 +1,25 @@
-const MongoClient = require("mongodb").MongoClient;
+const { MongoClient, ObjectId } = require("mongodb");
 MongoClient.connect(
   "mongodb://localhost:27017",
   { useNewUrlParser: true },
   function(err, client) {
     if (err) return err;
+    const object = new ObjectId();
+    console.log(object);
+
     console.log("CONNECTED");
-    const db = client.db("animals");
-    db.collection("mamals").insertOne(
-      {
-        name: "horse"
-      },
-      (err, result) => {
-        if (err) {
-          return console.log(err);
-        }
-        console.log("INSERTED");
-      }
-    );
+    //const db = client.db("animals");
+    //db.collection("mamals").insertOne(
+    // {
+    //  name: "horse"
+    //},
+    //(err, result) => {
+    // if (err) {
+    //  return console.log(err);
+    // }
+    //console.log("INSERTED");
+    /// }
+    // );
   }
 );
 
