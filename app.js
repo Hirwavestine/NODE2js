@@ -8,7 +8,15 @@ MongoClient.connect(
     console.log(object);
 
     console.log("CONNECTED");
-    //const db = client.db("animals");
+    const db = client.db("animals");
+
+    db.collection("mamals")
+      .find()
+      .toArray(function(err, result) {
+        if (err) throw err;
+        console.log(result);
+      });
+    //
     //db.collection("mamals").insertOne(
     // {
     //  name: "horse"
