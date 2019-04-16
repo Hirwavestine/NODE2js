@@ -18,18 +18,19 @@ MongoClient.connect(
         if (err) throw err;
         console.log(result);
       });
-    //
-    //db.collection("mamals").insertOne(
-    // {
-    //  name: "horse"
-    //},
-    //(err, result) => {
-    // if (err) {
-    //  return console.log(err);
-    // }
-    //console.log("INSERTED");
-    /// }
-    // );
+
+    //Create Data
+    db.collection("mamals").insertOne(
+      {
+        name: "horse"
+      },
+      (err, result) => {
+        if (err) {
+          return console.log(err);
+        }
+        console.log("INSERTED");
+      }
+    );
   }
 );
 
