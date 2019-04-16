@@ -1,9 +1,31 @@
-const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/animals", { useMongoClient: true });
-mongoose.connection.once("open", () => console.log("CONNECTED")).on("error"),
-  err => {
-    console.log(`could not connect`, err);
-  };
+const MongoClient = require("mongodb").MongoClient;
+MongoClient.connect(
+  "mongodb://localhost:27017",
+  { useNewUrlParser: true },
+  function(err, client) {
+    if (err) return err;
+    console.log("CONNECTED");
+    const db = client.db("animals");
+    db.collection("mamals").insertOne(
+      {
+        name: "horse"
+      },
+      (err, result) => {
+        if (err) {
+          return console.log(err);
+        }
+        console.log("INSERTED");
+      }
+    );
+  }
+);
+
+//const mongoose = require("mongoose");
+//mongoose.connect("mongodb://localhost:27017/animals", { useMongoClient: true });
+//mongoose.connection.once("open", () => console.log("CONNECTED")).on("error"),
+// err => {
+//    console.log(`could not connect`, err);
+// };
 
 //const mongoose = require("mongoose");
 //mongoose.Promise = global.Promise;
