@@ -11,6 +11,8 @@ MongoClient.connect(
     const db = client.db("animals");
 
     db.collection("mamals")
+      //fetching
+
       .find()
       .toArray(function(err, result) {
         if (err) throw err;
