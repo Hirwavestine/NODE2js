@@ -36,19 +36,33 @@ MongoClient.connect(
     //Updating
     //const db = client.db("animals");
 
+    // db.collection("mamals")
+    //  .findOneAndUpdate(
+    //    {
+    //     _id: new ObjectId("5cb49afd1aa8970d1b7f1899")
+    //    },
+    //   { $set: { name: "updated-2" } }
+    // )
+    //Promises is a way to ensure that our data return to us as a successfull command or was not successful
+    // .then(result => {
+    //   console.log(result);
+    // })
+    // .catch(err => {
+    //   console.log(err);
+    //});
+
+    //Deleting
+
+    // db.collection("mamals").deleteMany({ name: "Hirwa Vestine" });
+    // db.collection("mamals").deleteOne({ name: "Hirwa Vestine" });
+    //  db.collection("mamals").deleteAndFind({ name: "Hrwa Vestine" });
+
     db.collection("mamals")
-      .findOneAndUpdate(
-        {
-          _id: new ObjectId("5cb49afd1aa8970d1b7f1899")
-        },
-        { $set: { name: "updated-2" } }
-      )
-      //Promises is a way to ensure that our data return to us as a successfull command or was not successful
+      .findOneAndDelete({
+        _id: new ObjectId("5cb5a824e3e0210c52d471e5")
+      })
       .then(result => {
         console.log(result);
-      })
-      .catch(err => {
-        console.log(err);
       });
   }
 );
