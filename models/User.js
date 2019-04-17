@@ -1,21 +1,21 @@
 const mongoose = require("mongoose");
 
 const User = mongoose.model("users", {
-  firstname: {
+  firstName: {
     type: String,
     required: true,
     minlength: 4,
     trim: true
   },
-  lastname: {
+  lastName: {
     type: String,
     required: true,
     minlength: 4,
     trim: true
   },
   isActive: {
-    type: number,
+    type: Number,
     default: 0
   }
 });
-module.exports = { User };
+module.exports = User;
