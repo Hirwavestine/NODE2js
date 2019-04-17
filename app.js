@@ -1,68 +1,19 @@
-const { MongoClient, ObjectId } = require("mongodb");
+const mongoose = require("mongoose");
+const User = require("./models/User");
 
-MongoClient.connect(
-  "mongodb://localhost:27017",
-  { useNewUrlParser: true },
-  function(err, client) {
-    if (err) return err;
-    //const object = new ObjectId();
-    //console.log(object);
+mongoose.connect("mongodb:localhost:27017/mongoose", { useMongoClient: true });
+mongoose.connection
+  .once("open", () => console.log("CONNECTED"))
+  .on("error", err => {
+    console.log(`could not connect`, err);
+  });
 
-    console.log("CONNECTED");
-    const db = client.db("animals");
-
-    //Create Data
-
-    //db.collection('mamals').insertOne({
-    //  name:'fish',
-    // legs:2
-    //}, (err, result)=>{
-    // if(err){ return console.lg(err)}
-    //
-    //
-    //console.log('INSERTED');
-    //
-    //
-
-    //FECTHING (Reading) Data
-
-    //db.collection("mamals")
-    // .find()
-    //.toArray(function(err, result) {
-    //   if (err) throw err;
-    //  console.log(result);
-    //});
-
-    //Updating
-    //const db = client.db("animals");
-
-    // db.collection("mamals")
-    //  .findOneAndUpdate(
-    //    {
-    //     _id: new ObjectId("5cb49afd1aa8970d1b7f1899")
-    //    },
-    //   { $set: { name: "updated-2" } }
-    // )
-    //Promises is a way to ensure that our data return to us as a successfull command or was not successful
-    // .then(result => {
-    //   console.log(result);
-    // })
-    // .catch(err => {
-    //   console.log(err);
-    //});
-
-    //Deleting
-
-    // db.collection("mamals").deleteMany({ name: "Hirwa Vestine" });
-    // db.collection("mamals").deleteOne({ name: "Hirwa Vestine" });
-    //  db.collection("mamals").deleteAndFind({ name: "Hrwa Vestine" });
-
-    db.collection("mamals")
-      .findOneAndDelete({
-        _id: new ObjectId("5cb5a824e3e0210c52d471e5")
-      })
-      .then(result => {
-        console.log(result);
-      });
-  }
-);
+//const mongoose = require("mongoose");
+//mongoose.Promise = global.Promise;
+//mongoose
+// .connect("mongodb://localhost:27017/animals")
+// .then(db => {
+//  console.log("MONGO CONNECTED");
+// })
+//.catch(err => {
+//   console.log("Error");

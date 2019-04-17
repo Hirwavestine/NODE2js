@@ -1,5 +1,5 @@
 {
-  "name": "node2js",
+  "name": "mongoose",
   "version": "1.0.0",
   "description": "Database stuff",
   "main": "app.js",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Hirwavestine/NODE2js#readme",
   "dependencies": {
+    "express": "^4.16.4",
     "mongodb": "^3.2.3",
     "mongoose": "^5.5.1"
   }
