@@ -18,4 +18,4 @@ const User = mongoose.model("users", {
     default: 0
   }
 });
-module.exports = User;
+module.exports = { User };
