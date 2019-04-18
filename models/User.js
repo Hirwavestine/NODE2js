@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const User = mongoose.model("users", {
+const UserSchema = new Schema({
   firstName: {
     //Validation
     type: String,
@@ -28,4 +29,6 @@ const User = mongoose.model("users", {
     default: 0
   }
 });
-module.exports = User;
+//Tell mongoose that is a model and that model is users
+//("users", UserSchema) we tell listen this model here users is going to be right here in UserSchema
+module.exports = mongoose.model("users", UserSchema);

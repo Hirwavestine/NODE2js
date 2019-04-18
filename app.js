@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const User = require("./models/User");
 
 //mongoose.Promise = global.Promise;
@@ -14,13 +15,12 @@ mongoose.connection
   });
 
 const newUser = new User({
-  firstName: "Hirwa",
-  lastName: "Vestine",
-  middleName: "Tehillah",
-  isActive: 1
+  firstName: "Berwa",
+  lastName: "Amaris",
+  middleName: "Davinah"
 });
 
 newUser.save(function(err, dataSaved) {
-  if (err) return err;
+  if (err) return console.log(err);
   console.log(dataSaved);
 });
