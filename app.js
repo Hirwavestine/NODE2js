@@ -31,5 +31,5 @@ mongoose.connection
 //environment that is or use our local environment or local port
 const port = 4444 || process.env.PORT;
 app.listen(port, () => {
-  console.log(`listening on ${port}`);
+  console.log(`Our server is listening on ${port}`);
 });
