@@ -1,0 +1,24 @@
+{
+  "name": "mongoose",
+  "version": "1.0.0",
+  "description": "Database stuff",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hirwavestine/NODE2js.git"
+  },
+  "author": "Hirwa Vestine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hirwavestine/NODE2js/issues"
+  },
+  "homepage": "https://github.com/Hirwavestine/NODE2js#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongodb": "^3.2.3",
+    "mongoose": "^5.5.1"
+  }
+}
