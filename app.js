@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const User = require("./models/User");
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+//this allows to send json data
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.Promise = global.Promise;
 
@@ -22,14 +26,15 @@ app.get("/", (req, res) => {
 //create a route that is going to take a post request and is going to take a post request going to users
 app.post("/users", (req, res) => {
   const newUser = new User({
-    firstName: "Sangwas",
-    lastName: "Arsened",
-    middleName: "Davin"
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    middleName: req.body.middleName,
+    isActive= req.body.isActive
   });
   //then is like execute
   newUser.save().then(savesdUser => {
     //console.log("saved user");
-    res.send("USER SAVED");
+    res.send("USER SAVED BY ME");
   });
 });
 
