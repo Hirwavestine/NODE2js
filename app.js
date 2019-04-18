@@ -15,6 +15,7 @@ mongoose.connection
   .on("error", err => {
     console.log(`could not connect`, err);
   });
+app.post("/users");
 
 // const newUser = new User({
 //   firstName: "Berwa",
