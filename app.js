@@ -15,17 +15,23 @@ mongoose.connection
   .on("error", err => {
     console.log(`could not connect`, err);
   });
+//create routes
+app.get("/", (req, res) => {
+  res.send("ROOT");
+});
+//create a route that is going to take a post request and is going to take a post request going to users
+app.post("/users", (req, res) => {});
 
-// const newUser = new User({
-//   firstName: "Berwa",
-//   lastName: "Amaris",
-//   middleName: "Davinah"
-// });
+const newUser = new User({
+  firstName: "Berwa",
+  lastName: "Amaris",
+  middleName: "Davinah"
+});
 
-// newUser.save(function(err, dataSaved) {
-//   if (err) return console.log(err);
-//   console.log(dataSaved);
-// });
+newUser.save(function(err, dataSaved) {
+  if (err) return console.log(err);
+  console.log(dataSaved);
+});
 
 //process.env.PORT we were saying either use a port that we have available in the environment whatever
 //environment that is or use our local environment or local port
