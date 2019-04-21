@@ -23,19 +23,26 @@ mongoose.connection
 app.get("/", (req, res) => {
   res.send("ROOT");
 });
+
 //create a route that is going to take a post request and is going to take a post request going to users
 app.post("/users", (req, res) => {
   const newUser = new User({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     middleName: req.body.middleName,
-    isActive= req.body.isActive
+    isActive: req.body.isActive
   });
+
   //then is like execute
-  newUser.save().then(savesdUser => {
-    //console.log("saved user");
-    res.send("USER SAVED BY ME");
-  });
+  newUser
+    .save()
+    .then(savesdUser => {
+      //console.log("saved user");
+      res.send("USER SAVED BY ME");
+    })
+    .catch(err => {
+      res.status(404).send("USER NOT SAVED BECAUSE ......");
+    });
 });
 
 //process.env.PORT we were saying either use a port that we have available in the environment whatever
