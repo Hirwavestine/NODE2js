@@ -51,6 +51,22 @@ app.get("/users", (req, res) => {
   });
 });
 
+//PATCH or PUT
+//#nce btn PATCH and PUT
+//PUT when you put something you need to specify all the fields that you have in your model with Mongols.
+//every time you send a put request you need to replace all the data
+//PATCH , when you do patch you can just say listen I just want to patch the first name.
+//so when you want to patch something just send the data that you want to patch.
+
+app.patch("/users/:id", (req, res) => {
+  const id = req.params.id;
+  const firstName = req.body.firstName;
+
+  User.findByIdAndUpdate(id, { $set: { firstName: firstName } }, { new: true })
+  .then(savedUser => {
+    res.send("USER SAVED BY PATCH AGAIN");
+  });
+});
 //process.env.PORT we were saying either use a port that we have available in the environment whatever
 //environment that is or use our local environment or local port
 const port = 4444 || process.env.PORT;
