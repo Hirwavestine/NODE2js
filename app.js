@@ -36,7 +36,7 @@ app.post("/users", (req, res) => {
   //then is like execute
   newUser
     .save()
-    .then(savesdUser => {
+    .then(savedUser => {
       //console.log("saved user");
       res.send("USER SAVED BY ME");
     })
