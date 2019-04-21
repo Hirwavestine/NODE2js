@@ -58,15 +58,45 @@ app.get("/users", (req, res) => {
 //PATCH , when you do patch you can just say listen I just want to patch the first name.
 //so when you want to patch something just send the data that you want to patch.
 
-app.patch("/users/:id", (req, res) => {
-  const id = req.params.id;
-  const firstName = req.body.firstName;
+// app.patch("/users/:id", (req, res) => {
+//   const id = req.params.id;
+//   const firstName = req.body.firstName;
 
-  User.findByIdAndUpdate(id, { $set: { firstName: firstName } }, { new: true })
-  .then(savedUser => {
-    res.send("USER SAVED BY PATCH AGAIN");
+//   User.findByIdAndUpdate(id, { $set: { firstName: firstName } }, { new: true })
+//   .then(savedUser => {
+//     res.send("USER SAVED BY PATCH AGAIN");
+//   });
+// });
+
+// app.put("/users/:id", (req, res) => {
+//   const id = req.params.id;
+//   const firstName = req.body.firstName;
+//   const lastName = req.body.lastName;
+//   const middleName = req.body.middleName;
+
+//   User.findByIdAndUpdate(
+//     id,
+//     {
+//       $set: { firstName: firstName, lastName: lastName, middleName: middleName }
+//     },
+//     { new: true }
+//   ).then(savedUser => {
+//     res.send("USER SAVED BY PUT AGAIN");
+//   });
+// });
+
+app.put("/users/:id", (req, res) => {
+  User.findOne({ _id: req.params.id }).then(user => {
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.firstName;
+    user.middleName = req.body.middleName;
+
+    user.save().then(userSaved => {
+      res.send(userSaved);
+    });
   });
 });
+
 //process.env.PORT we were saying either use a port that we have available in the environment whatever
 //environment that is or use our local environment or local port
 const port = 4444 || process.env.PORT;
