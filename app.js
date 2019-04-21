@@ -44,6 +44,12 @@ app.post("/users", (req, res) => {
       res.status(404).send("USER NOT SAVED BECAUSE ......");
     });
 });
+//Fecthing Data
+app.get("/users", (req, res) => {
+  User.find({}).then(users => {
+    res.status(200).send(users);
+  });
+});
 
 //process.env.PORT we were saying either use a port that we have available in the environment whatever
 //environment that is or use our local environment or local port
