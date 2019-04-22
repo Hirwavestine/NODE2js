@@ -85,15 +85,46 @@ app.get("/users", (req, res) => {
 //   });
 // });
 
-app.put("/users/:id", (req, res) => {
-  User.findOne({ _id: req.params.id }).then(user => {
-    user.firstName = req.body.firstName;
-    user.lastName = req.body.firstName;
-    user.middleName = req.body.middleName;
+// app.put("/users/:id", (req, res) => {
+//   User.findOne({ _id: req.params.id }).then(user => {
+//     user.firstName = req.body.firstName;
+//     g;
+//     user.lastName = req.body.firstName;
+//     user.middleName = req.body.middleName;
 
-    user.save().then(userSaved => {
-      res.send(userSaved);
-    });
+//     user.save().then(userSaved => {
+//       res.sen(userSaved);
+//     });
+//   });
+// });
+
+// app.delete("/users/:id", (req, res) => {
+//   User.findOne({ _id: req.params.id }).then(user => {
+//     user
+//       .remove()
+//       .then(userRemoved => {
+//         res.send("user remove" + userRemoved);
+//       })({ _id: req.params.id })
+//       .then(user => {
+//         user.remove();
+//       });
+//   });
+// });
+
+app.delete("/users/:id", (req, res) => {
+  //user.findOneAndRemove works
+  //User.findByIdAndRemove({ _id: req.params.id })
+  User.findByIdAndRemove(req.params.id).then(userRemoved => {
+    //User X removed
+    res.send(`User ${userRemoved.firstName} removed`);
+  });
+});
+app.delete("/users/:id", (req, res) => {
+  //user.findOneAndRemove works
+  //User.findByIdAndRemove({ _id: req.params.id })
+  User.remove({ _id: req.params.id }).then(userRemoved => {
+    //User X removed
+    res.send(`User ${userRemoved.firstName} removed`);
   });
 });
 
